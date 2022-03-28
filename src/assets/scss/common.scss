@@ -32,7 +32,16 @@
                 img {
                     display: inline-block;
                 }
-            }            
+                p {
+                    color:#fff;
+                    font-weight:700;
+                    font-size: 25px;
+                    font-family: "Exo", sans-serif;
+                    em {
+                        color: #ffb444;
+                    }
+                }
+            }          
         }
         .gnb-left {
             display: inline-block;
@@ -51,6 +60,29 @@
                     line-height: 74px;
                     color: #a5a5a5;
                 }
+            }
+        }
+        .btn-search{
+            position: absolute;
+            top: 50%;
+            right: 0;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+            height: 100%;
+            padding-left: 40px;
+            background:url('~@/assets/images/icon_search.svg') no-repeat 0;
+            border: none;
+            background-size: 36px 36px;
+            font-size: 0;
+            span {
+                font-size: 18px;
+                line-height: 27px;
+                color: #a5a5a5;
+            }
+            &::after {
+                content: "";
+                display: table;
+                clear: both;
             }
         }
     }
