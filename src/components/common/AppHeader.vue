@@ -14,9 +14,9 @@
               <li><router-link to="/sub">서브</router-link></li>
             </ul>
           </div>
-          <button type="button" class="btn-search">
+          <!-- <button type="button" class="btn-search">
             <span>검색하기</span>
-          </button>
+          </button> -->
         </template>
       </div>
     </div>
