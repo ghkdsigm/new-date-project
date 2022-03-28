@@ -1,5 +1,7 @@
 <template>
-  <div>2</div>
+  <div>
+    <div class="wrap">2</div>
+  </div>
 </template>
 
 <script>

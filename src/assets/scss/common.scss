@@ -1,5 +1,5 @@
 .header {
-    position: fixed;
+    position: relative;
     z-index: 1750;
     top: 0;
     left: 0;
@@ -75,7 +75,7 @@
             background-size: 36px 36px;
             font-size: 0;
             span {
-                font-size: 18px;
+                font-size: 19px;
                 line-height: 27px;
                 color: #a5a5a5;
             }
@@ -88,6 +88,56 @@
     }
 }
 
+/**푸터**/
+.gitLink {
+    width: 50px;
+    height: 50px;
+    display: block;
+    margin: 0 auto 35px;
+    text-align: center;
+    font-size: 12px;
+    color: #999;
+    &:hover {
+      .MuiSvgIcon-root {
+        fill: #fff;
+      }
+      span {
+        color: #fff;
+      }
+    }
+    img {
+      width: 100%;
+    }
+  }
+  .footer {
+    font-family: "Roboto", sans-serif;
+    background-color: #262626;
+    /* border-top: 1px solid #e1e1e1; */
+    font-size: 15px;
+    color: #000;
+    letter-spacing: 0em;
+    .footer_wrap {
+      width: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      height: auto;
+      box-sizing: border-box;
+      text-align: center;
+      padding: 50px 10px;
+      color: #fff;
+      .copy {
+        display: block;
+        font-weight: 400;
+        padding: 15px 0 30px;
+        color: #fff;
+      }
+      p {
+        font-size: 12px;
+        font-weight: 300;
+        color: #adadad;
+      }
+    }
+}
 
 .wrap {
     width: 1240px;
