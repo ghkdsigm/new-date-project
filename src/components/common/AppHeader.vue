@@ -5,7 +5,7 @@
         <template>
           <h1 class="logo">
             <a href="/"
-              ><p>SMOKING <em>ZONE</em></p></a
+              ><p>Movie <em>Zone</em></p></a
             >
           </h1>
           <div id="menu" class="gnb-left">
