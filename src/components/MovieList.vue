@@ -33,7 +33,6 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-  margin-top: 30px;
   .inner {
     padding: 10px 0;
     border-radius: 4px;

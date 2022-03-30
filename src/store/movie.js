@@ -1,7 +1,7 @@
 import axios from "axios";
 import { fetchBoxOffice } from "../api/index.js";
 
-const _defaultMessage = "검색 내용이 존재하지않습니다.";
+const _defaultMessage = "there is no results. please search some movie!";
 export default {
   namespaced: true,
   state: {

@@ -1,58 +1,65 @@
 <template>
-  <div class="wrap">
-    <div class="content">
-      <div class="container">
-        <div class="movie-details">
-          <div
-            :style="{
-              backgroundImage: `url(${requestDiffSizeImage(theMovie.Poster)})`,
-            }"
-            class="poster"
-          ></div>
-          <div class="specs">
-            <div class="title">
-              {{ theMovie.Title }}
-            </div>
-            <div class="labels">
-              <span>{{ theMovie.Released }}</span>
-              <span>{{ theMovie.Runtime }}</span>
-              <span>{{ theMovie.Country }}</span>
-            </div>
-            <div class="plot">
-              {{ theMovie.Plot }}
-            </div>
-            <div class="ratings">
-              <h3>Ratings</h3>
-              <div class="rating-wrap">
-                <div
-                  v-for="{ Source: name, Value: score } in theMovie.Ratings"
-                  :key="name"
-                  :title="name"
-                  class="rating"
-                >
-                  <img
-                    src="https://raw.githubusercontent.com/ParkYoungWoong/vue3-movie-app/master/src/assets/Internet%20Movie%20Database.png"
-                    alt="name"
-                  />
-                  <span>{{ score }}</span>
+  <div>
+    <div class="wrapTitle">
+      <p>{{ theMovie.Title.toUpperCase() }}</p>
+    </div>
+    <div class="wrap">
+      <div class="content">
+        <div class="">
+          <div class="movie-details">
+            <div
+              :style="{
+                backgroundImage: `url(${requestDiffSizeImage(
+                  theMovie.Poster,
+                )})`,
+              }"
+              class="poster"
+            ></div>
+            <div class="specs">
+              <div class="title">
+                {{ theMovie.Title }}
+              </div>
+              <div class="labels">
+                <span>{{ theMovie.Released }}</span>
+                <span>{{ theMovie.Runtime }}</span>
+                <span>{{ theMovie.Country }}</span>
+              </div>
+              <div class="plot">
+                {{ theMovie.Plot }}
+              </div>
+              <div class="ratings">
+                <h3>Ratings</h3>
+                <div class="rating-wrap">
+                  <div
+                    v-for="{ Source: name, Value: score } in theMovie.Ratings"
+                    :key="name"
+                    :title="name"
+                    class="rating"
+                  >
+                    <img
+                      src="https://raw.githubusercontent.com/ParkYoungWoong/vue3-movie-app/master/src/assets/Internet%20Movie%20Database.png"
+                      alt="name"
+                    />
+                    <span>{{ score }}</span>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div>
-              <h3>Actors</h3>
-              {{ theMovie.Actors }}
-            </div>
-            <div>
-              <h3>Director</h3>
-              {{ theMovie.Director }}
-            </div>
-            <div>
-              <h3>Production</h3>
-              {{ theMovie.Production }}
-            </div>
-            <div>
-              <h3>Genre</h3>
-              {{ theMovie.Genre }}
+              <div>
+                <h3>Actors</h3>
+                {{ theMovie.Actors }}
+              </div>
+              <div>
+                <h3>Director</h3>
+                {{ theMovie.Director }}
+              </div>
+              <div>
+                <h3>Production</h3>
+                {{ theMovie.Production }}
+              </div>
+              <div>
+                <h3>Genre</h3>
+                {{ theMovie.Genre }}
+              </div>
             </div>
           </div>
         </div>
@@ -89,6 +96,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.wrapTitle {
+  background: #454545;
+  text-align: center;
+  padding: 30px 0;
+  p {
+    font-size: 25px;
+  }
+}
 .container {
   padding-top: 40px;
 }

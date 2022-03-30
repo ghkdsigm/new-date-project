@@ -10,7 +10,7 @@
               v-model="$data[filter.name]"
               class="form-select"
             >
-              <option v-if="filter.name === 'year'" value="">년도</option>
+              <option v-if="filter.name === 'year'" value="">year</option>
               <option v-for="item in filter.items" :key="item">
                 {{ item }}
               </option>
@@ -22,7 +22,7 @@
             name="keyword"
             v-model="title"
             @keyup.enter="apply"
-            placeholder="영화명을 검색해 주세요!"
+            placeholder="Search some Movie!"
             class="input-text"
             title="검색어를 입력해 주세요"
           />
@@ -82,7 +82,7 @@ export default {
           year: this.year,
         });
       } else {
-        alert("검색어를 입력해주세요!");
+        alert("Search some Movie!");
       }
     },
   },

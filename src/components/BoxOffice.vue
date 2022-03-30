@@ -3,8 +3,12 @@
     <!-- <div v-for="(item, index) in boxoffice.items" :key="index">
       {{ item }}
     </div> -->
+    <div class="wrap">
+      <div class="container">
+        <h2>BOX OFFICE</h2>
+      </div>
+    </div>
     <div class="slideWrap">
-      <h2>BOX OFFICE</h2>
       <swiper
         ref="mySwiper"
         :options="swiperOptions"
