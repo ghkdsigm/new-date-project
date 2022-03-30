@@ -2,7 +2,7 @@
   <div class="footer">
     <div class="footer_wrap" style="opacity: 1">
       <a
-        href="https://github.com/ghkdsigm/new-portfolio-2022"
+        href="https://github.com/ghkdsigm/new-movie-zone"
         class="gitLink"
         target="_target"
       >

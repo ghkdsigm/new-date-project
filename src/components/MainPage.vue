@@ -82,7 +82,7 @@ export default {
           year: this.year,
         });
       } else {
-        alert("Search some Movie!");
+        alert("Please, Search some Movie.");
       }
     },
   },

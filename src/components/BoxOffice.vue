@@ -5,7 +5,7 @@
     </div> -->
     <div class="wrap">
       <div class="container">
-        <h2>BOX OFFICE</h2>
+        <h2 class="officeh2">BOX OFFICE</h2>
       </div>
     </div>
     <div class="slideWrap">
@@ -162,5 +162,12 @@ export default {
   color: #fff;
   font-size: 26px;
   font-weight: bold;
+}
+
+.officeh2 {
+  display: inline-block;
+  margin: 0 10px;
+  font-size: 20px;
+  font-weight: 400;
 }
 </style>
