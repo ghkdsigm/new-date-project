@@ -6,9 +6,9 @@
       </div>
       <div v-else class="movies">
         <div class="searchResult">
-          <strong
-            >" <em>{{ title }}</em> " 로 검색된 결과
-            <em>{{ number }}</em> 건</strong
+          <strong>
+            <em>{{ number }}</em> results searched in "
+            <em>{{ title.toUpperCase() }}</em> "</strong
           >
         </div>
 
@@ -38,7 +38,10 @@ export default {
     border-radius: 4px;
     text-align: center;
     &.no-result {
-      padding: 70px 0;
+      padding: 20px 0;
+      background: #212121;
+      border-radius: 6px;
+      margin: 0 10px;
     }
   }
   .message {
@@ -54,11 +57,11 @@ export default {
       font-size: 25px;
       margin-bottom: 35px;
       strong {
-        font-weight: 300;
-        font-size: 25px;
+        font-weight: 100;
+        font-size: 30px;
         em {
           color: #96f2d7;
-          font-weight: 400;
+          font-weight: 300;
           font-size: 32px;
         }
       }

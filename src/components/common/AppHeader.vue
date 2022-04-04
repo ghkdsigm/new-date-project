@@ -10,8 +10,8 @@
           </h1>
           <div id="menu" class="gnb-left">
             <ul>
-              <li><router-link to="/">Home</router-link></li>
-              <li><router-link to="/sub">Sub</router-link></li>
+              <li><router-link to="/">HOME</router-link></li>
+              <li><router-link to="/sub">CATEGORY</router-link></li>
             </ul>
           </div>
           <!-- <button type="button" class="btn-search">

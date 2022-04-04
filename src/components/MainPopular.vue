@@ -17,14 +17,17 @@
       >
         <swiper-slide
           class="swiper-img"
-          v-for="(item, index) in boxoffice.items"
+          v-for="(item, index) in popular.results"
           :key="index"
         >
           <div class="img_box">
             <div class="image-area">
-              <span class="rankTag">{{ item.rank }}</span>
+              <span class="rankTag">{{ index + 1 }}</span>
               <a href="#">
-                <img :src="`${requestDiffSizeImage(item.image)}`" alt="" />
+                <img
+                  :src="`https://image.tmdb.org/t/p/w500${item.poster_path}`"
+                  alt=""
+                />
               </a>
             </div>
           </div>
@@ -86,21 +89,15 @@ export default {
     };
   },
   computed: {
-    ...mapState("movie", ["boxoffice"]),
+    ...mapState("movie", ["popular"]),
   },
   created() {
-    this.$store.dispatch("movie/FETCH_BOXOFFICE");
-  },
-  methods: {
-    requestDiffSizeImage(url) {
-      const src = url.replaceAll("128", "768").replaceAll("176", "1056");
-      return src;
-    },
+    this.$store.dispatch("movie/FETCH_POPULAR");
   },
 };
 </script>
 
-<style>
+<style scope>
 .slideWrap {
   margin: 30px 0 30px 0;
 }

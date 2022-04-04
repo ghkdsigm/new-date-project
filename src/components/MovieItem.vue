@@ -56,7 +56,7 @@ export default {
     text-align: 14px;
     position: absolute;
     left: 0;
-    bottom: 0;
+    bottom: -1px;
     backdrop-filter: blur(10px);
     .year {
       color: #ccc;

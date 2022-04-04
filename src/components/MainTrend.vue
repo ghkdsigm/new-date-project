@@ -5,7 +5,7 @@
     </div> -->
     <div class="wrap">
       <div class="container">
-        <h2 class="officeh2">POPULAR IN THEATERS</h2>
+        <h2 class="officeh2">TREND</h2>
       </div>
     </div>
     <div class="slideWrap">
@@ -17,14 +17,17 @@
       >
         <swiper-slide
           class="swiper-img"
-          v-for="(item, index) in boxoffice.items"
+          v-for="(item, index) in trend.results"
           :key="index"
         >
           <div class="img_box">
             <div class="image-area">
-              <span class="rankTag">{{ item.rank }}</span>
+              <span class="rankTag">{{ item.media_type }}</span>
               <a href="#">
-                <img :src="`${requestDiffSizeImage(item.image)}`" alt="" />
+                <img
+                  :src="`https://image.tmdb.org/t/p/w500${item.poster_path}`"
+                  alt=""
+                />
               </a>
             </div>
           </div>
@@ -49,20 +52,19 @@ export default {
   data() {
     return {
       swiperOptions: {
-        slidesPerView: 5,
+        slidesPerView: 3,
         spaceBetween: 30,
-        freeMode: false,
+        freeMode: true,
         freeModeSticky: false,
-        scrollbarHide: true,
-        pagination: {
-          clickable: true,
-        },
+        scrollbar: ".sw-scroll1",
+        scrollbarHide: false,
+        scrollbarDraggable: true,
         grabCursor: true,
         loop: false,
-        // pagination: {
-        //   type: "progressbar",
-        //   el: ".swiper-pagination",
-        // },
+        pagination: {
+          type: "progressbar",
+          el: ".swiper-pagination",
+        },
         enterInsufficientSlides: true, // 컨텐츠의 수량에 따라 중앙정렬 여부를 결정함
         breakpoints: {
           375: {
@@ -86,23 +88,20 @@ export default {
     };
   },
   computed: {
-    ...mapState("movie", ["boxoffice"]),
+    ...mapState("movie", ["trend"]),
   },
   created() {
-    this.$store.dispatch("movie/FETCH_BOXOFFICE");
-  },
-  methods: {
-    requestDiffSizeImage(url) {
-      const src = url.replaceAll("128", "768").replaceAll("176", "1056");
-      return src;
-    },
+    this.$store.dispatch("movie/FETCH_TREND");
   },
 };
 </script>
 
-<style>
+<style scope>
 .slideWrap {
   margin: 30px 0 30px 0;
+}
+.swiper-container {
+  margin: 0 10px;
 }
 .swiper {
   width: 100%;
@@ -184,8 +183,11 @@ export default {
 .officeh2 {
   display: inline-block;
   margin: 20px 10px 0;
-  font-size: 35px;
+  font-size: 25px;
   font-weight: 500;
   font-family: Neusa, Impact, Helvetica Neue, Arial, Sans-Serif;
+}
+.swiper-pagination-progressbar-fill {
+  background: #96f2d7 !important;
 }
 </style>
