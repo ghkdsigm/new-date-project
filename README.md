@@ -1,4 +1,4 @@
-# new-smoking-area
+# new-movie-zone
 
 ## Project setup
 ```
