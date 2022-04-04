@@ -183,7 +183,7 @@ export default {
 .officeh2 {
   display: inline-block;
   margin: 20px 10px 0;
-  font-size: 25px;
+  font-size: 35px;
   font-weight: 500;
   font-family: Neusa, Impact, Helvetica Neue, Arial, Sans-Serif;
 }
