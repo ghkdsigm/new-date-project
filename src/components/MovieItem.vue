@@ -30,9 +30,8 @@ export default {
 
 <style lang="scss" scoped>
 .movie {
-  $width: 228px;
-  width: $width;
-  height: $width * 3 / 2; //가로넓이대비 세로 값 계산
+  width: 228px;
+  height: 350px; //가로넓이대비 세로 값 계산
   margin: 10px;
   border-radius: 4px;
   background-color: gray;

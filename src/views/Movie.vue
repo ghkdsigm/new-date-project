@@ -112,7 +112,7 @@ export default {
   .poster {
     flex-shrink: 0;
     width: 500px;
-    height: 500px * 3 / 2;
+    height: 1200;
     margin-right: 70px;
   }
   .specs {
@@ -148,7 +148,7 @@ export default {
   .poster {
     flex-shrink: 0;
     width: 500px;
-    height: 500px * 3 / 2;
+    height: 1200;
     margin-right: 70px;
     border-radius: 10px;
     background-color: #fff;
