@@ -47,6 +47,14 @@ function movieDetail(id) {
   });
 }
 
+function search(keyword) {
+  return request.get(`search/movie/`, {
+    params: {
+      query: keyword,
+    },
+  });
+}
+
 function similar(id) {
   return request.get(`movie/${id}`, {
     params: { append_to_response: "similar_movies,credits,external_ids" },
@@ -62,4 +70,5 @@ export {
   movieDetail,
   Person,
   similar,
+  search,
 };

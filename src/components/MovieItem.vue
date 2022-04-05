@@ -1,16 +1,13 @@
 <template>
-  <RouterLink
-    :to="`/movie/${movie.imdbID}`"
-    class="movie"
-    :style="{ backgroundImage: `url(${movie.Poster})` }"
-  >
-    <!-- <img :src="movie.Poster" alt="" width="200"/> -->
+  <RouterLink :to="`/moviedetail/${movie.id}`" class="movie">
+    <img :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`" alt="" />
+    <!-- :style="{ backgroundImage: `url(${movie.Poster})` }" -->
     <div class="info">
       <div class="year">
-        {{ movie.Year }}
+        {{ movie.release_date }}
       </div>
       <div class="title">
-        {{ movie.Title }}
+        {{ movie.title }}
       </div>
     </div>
   </RouterLink>
@@ -30,14 +27,17 @@ export default {
 
 <style lang="scss" scoped>
 .movie {
-  width: 228px;
-  height: 350px; //가로넓이대비 세로 값 계산
+  width: 185px;
+  height: 250px; //가로넓이대비 세로 값 계산
   margin: 10px;
   border-radius: 4px;
   background-color: gray;
   background-size: contain;
   overflow: hidden;
   position: relative;
+  img {
+    width: 100%;
+  }
   &:hover::after {
     content: "";
     position: absolute;

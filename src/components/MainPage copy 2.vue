@@ -2,55 +2,89 @@
   <div>
     <div class="smokeBg">
       <div id="searchFrm">
-        <form @submit.prevent="onSearch" class="search-box">
+        <div class="search-box">
+          <div class="selects">
+            <select
+              v-for="filter in filters"
+              :key="filter.name"
+              v-model="$data[filter.name]"
+              class="form-select"
+            >
+              <option v-if="filter.name === 'year'" value="">year</option>
+              <option v-for="item in filter.items" :key="item">
+                {{ item }}
+              </option>
+            </select>
+          </div>
           <input
             type="text"
             id="keyword"
             name="keyword"
-            v-model="keyword"
-            placeholder="영화를 검색해주세요!"
+            v-model="title"
+            @keyup.enter="apply"
+            placeholder="Search some Movie!"
             class="input-text"
             title="검색어를 입력해 주세요"
           />
-        </form>
-        <button
-          type="button"
-          class="btn-search"
-          title="검색하기"
-          @click="onSearch"
-        >
-          검색
-        </button>
+          <button
+            type="button"
+            class="btn-search"
+            title="검색하기"
+            @click="apply"
+          >
+            검색
+          </button>
+        </div>
       </div>
     </div>
-    <MovieList :movieList="movieList" />
   </div>
 </template>
 
 <script>
 import { search } from "@/api/index.js";
-import MovieList from "./MovieList";
 export default {
   data() {
     return {
-      keyword: "",
-      movieList: "",
+      title: "",
+      type: "movie",
+      number: 10,
+      year: "",
+      filters: [
+        {
+          name: "type",
+          items: ["movie", "series", "episode"],
+        },
+        {
+          name: "number",
+          items: [10, 20, 30, 40, 50, 60],
+        },
+        {
+          name: "year",
+          items: (() => {
+            const years = [];
+            const thisYear = new Date().getFullYear(); //최신년도
+            for (let i = thisYear; i >= 1985; i -= 1) {
+              years.push(i);
+            }
+            return years;
+          })(),
+        },
+      ],
     };
   },
-  components: {
-    MovieList,
-  },
   methods: {
-    async onSearch() {
-      if (!this.keyword) {
-        alert("영화 제목을 입력하세요!");
-        this.keyword = "";
-        return;
+    async apply() {
+      // searchmovie..
+      if (this.title !== "") {
+        this.$store.dispatch("movie/searchMovies", {
+          title: this.title,
+          type: this.type,
+          number: this.number,
+          year: this.year,
+        });
+      } else {
+        alert("Please, Search some Movie.");
       }
-      const { data } = await search(this.keyword);
-      console.log(data);
-      this.movieList = data.results;
-      this.keyword = "";
     },
   },
 };
@@ -91,7 +125,6 @@ export default {
     bottom: 0;
     line-height: 100px;
     .search-box {
-      display: inline-block;
       .selects {
         width: 100%;
         display: flex;
@@ -134,22 +167,22 @@ export default {
           color: rgb(141, 141, 141);
         }
       }
-    }
-  }
-  .btn-search {
-    overflow: hidden;
-    position: relative;
-    right: 0;
-    top: 0;
-    width: 64px;
-    height: 59px;
-    display: inline-block;
-    text-indent: -9999px;
-    border: none;
-    background: transparent url("~@/assets/images/btn-main-search.png")
-      no-repeat center;
-    &:hover {
-      cursor: pointer;
+      .btn-search {
+        overflow: hidden;
+        position: relative;
+        right: 0;
+        top: 0;
+        width: 64px;
+        height: 59px;
+        display: inline-block;
+        text-indent: -9999px;
+        border: none;
+        background: transparent url("~@/assets/images/btn-main-search.png")
+          no-repeat center;
+        &:hover {
+          cursor: pointer;
+        }
+      }
     }
   }
 }

@@ -52,8 +52,8 @@
                   v-if="movieDetail.videos.results[0]"
                   class="mt-5"
                   :key="movieDetail.videos.results[0].key"
-                  width="320"
-                  height="180"
+                  width="430"
+                  height="240"
                   :src="`${youtube(
                     movieDetail.videos.results[0].key,
                   )}?autoplay=1&modestbranding=1&autohide=1&showinfo=0&showtitle=0&controls=0`"
@@ -120,7 +120,6 @@ export default {
   }
 }
 .infoSection01 {
-  height: 100vh;
   background-size: cover;
   background-attachment: fixed;
   background-position: top;
@@ -144,28 +143,29 @@ export default {
     position: absolute;
     z-index: 1;
     width: 80%;
-    height: 80%;
     margin: auto;
     top: 0;
     right: 0;
     left: 0;
     bottom: 0;
+    align-items: center;
     .trailer {
-      width: 100%;
-      display: block;
-      flex: 1 1 100%;
-      margin-bottom: 20px;
+      // width: 100%;
+      // display: block;
+      // flex: 1 1 100%;
+      // margin-bottom: 20px;
     }
     .poster {
-      width: 30%;
+      width: 40%;
+      text-align: right;
       img {
-        width: 100%;
-        display: block;
-        margin: 0 auto;
+        width: 80%;
+        height: 100%;
+        display: inline-block;
       }
     }
     .info {
-      width: calc(60% - 10%);
+      width: calc(50% - 5%);
       margin-left: 10%;
       font-size: 20px;
       font-weight: 100;

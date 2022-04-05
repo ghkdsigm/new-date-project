@@ -3,11 +3,7 @@
     <!-- <div v-for="(item, index) in boxoffice.items" :key="index">
       {{ item }}
     </div> -->
-    <div class="wrap">
-      <div class="container">
-        <h2 class="officeh2">요즘 트렌드</h2>
-      </div>
-    </div>
+    <h2 class="officeh2">요즘 트렌드</h2>
     <div class="slideWrap">
       <swiper
         ref="mySwiper"
@@ -182,7 +178,7 @@ export default {
 
 .officeh2 {
   display: inline-block;
-  margin: 20px 10px 0;
+  margin: 50px 10px 0;
   font-size: 35px;
   font-weight: 500;
   font-family: Neusa, Impact, Helvetica Neue, Arial, Sans-Serif;

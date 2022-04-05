@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <h2 class="officeh2">계봉예정</h2>
-    <div class="inner">
+    <h2 class="officeh2">개봉예정</h2>
+    <div class="upcommingWrap">
       <ul class="movies">
         <li v-for="(item, index) in upcomming" :key="index" class="movie">
           <UpcommingListItem :item="item" />
@@ -29,8 +29,8 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-  .inner {
-    padding: 10px 0;
+  .upcommingWrap {
+    padding: 30px 0 200px;
     border-radius: 4px;
     text-align: center;
     &.no-result {

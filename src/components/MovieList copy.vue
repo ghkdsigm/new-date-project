@@ -1,25 +1,32 @@
 <template>
-  <div class="wrap">
-    <div class="container">
-      <div class="inner">
-        <div class="movies">
-          <MovieItem
-            v-for="movie in movieList"
-            :key="movie.id"
-            :movie="movie"
-          />
+  <div class="container">
+    <div :class="{ 'no-result': !movies.length }" class="inner">
+      <div v-if="message" class="message">
+        {{ message }}
+      </div>
+      <div v-else class="movies">
+        <div class="searchResult">
+          <strong>
+            <em>{{ number }}</em> results searched in "
+            <em>{{ title.toUpperCase() }}</em> "</strong
+          >
         </div>
+
+        <MovieItem v-for="movie in movies" :key="movie.imdbID" :movie="movie" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapState } from "vuex";
 import MovieItem from "./MovieItem";
 export default {
-  props: ["movieList"],
   components: {
     MovieItem,
+  },
+  computed: {
+    ...mapState("movie", ["movies", "message", "loading", "title", "number"]),
   },
 };
 </script>
@@ -44,7 +51,7 @@ export default {
   .movies {
     display: flex;
     flex-wrap: wrap;
-    justify-content: left;
+    justify-content: center;
     .searchResult {
       width: 100%;
       font-size: 25px;
