@@ -1,17 +1,7 @@
 <template>
   <div class="Vcontainer">
     <div class="Vinner">
-      <!-- <Video v-for="(movie, index) in video" :key="index" :movie="movie" /> -->
       <div>
-        <!-- <video :src="`https://www.youtube.com/watch?v=${video[0].key}`"></video> -->
-
-        <!-- <iframe
-          width="100%"
-          :src="`https://www.youtube.com/embed/${video}?autoplay=1&modestbranding=1&autohide=1&showinfo=0&showtitle=0&controls=0`"
-          frameborder="0"
-          allow="autoplay"
-        ></iframe> -->
-
         <!-- !this.updated.videos.results -->
         <template v-if="!this.updated.videos.results.length == 0">
           <div class="iframeTitle" ref="ifT">
@@ -26,7 +16,7 @@
               this.updated.videos.results[0].key,
             )}?autoplay=1&modestbranding=1&autohide=1&showinfo=0&showtitle=0&controls=0`"
             frameborder="0"
-            allow=" autoplay "
+            allow="autoplay"
           >
           </iframe>
         </template>

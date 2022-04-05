@@ -53,7 +53,7 @@
                     movieDetail.videos.results[0].key,
                   )}?autoplay=1&modestbranding=1&autohide=1&showinfo=0&showtitle=0&controls=0`"
                   frameborder="0"
-                  allow=" autoplay "
+                  allow="autoplay"
                 >
                 </iframe>
               </div>
