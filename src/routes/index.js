@@ -16,6 +16,10 @@ export const router = new VueRouter({
       component: () => import("@/views/Movie.vue"),
     },
     {
+      path: "/moviedetail/:id",
+      component: () => import("@/views/MovieDetail.vue"),
+    },
+    {
       path: "/sub",
       name: "sub",
       component: () => import("@/views/Sub.vue"),

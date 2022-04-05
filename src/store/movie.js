@@ -22,6 +22,7 @@ export default {
     upcomming: [],
     video: {},
     trend: [],
+    movieId: {},
   },
   getters: {},
   mutations: {
@@ -42,7 +43,9 @@ export default {
       return (state.popular = payload);
     },
     SET_UPCOMMING(state, payload) {
-      return (state.upcomming = payload);
+      state.upcomming = payload;
+      state.movieId = payload;
+      return;
     },
     SET_VIDEO(state, payload) {
       return (state.video = payload);
@@ -87,7 +90,7 @@ export default {
         }
       }
     },
-    //하나의 영화 상세정보 가져오기
+    //하나의 영화 상세정보 가져오기 - 검색페이지
     async searchMovieWithId({ commit }, payload) {
       try {
         const res = await _fetchMovie(payload);
@@ -110,8 +113,8 @@ export default {
         });
     },
 
-    async FETCH_UPCOMMING({ commit }) {
-      await upComming()
+    async FETCH_UPCOMMING({ commit }, id) {
+      await upComming(id)
         .then(res => {
           commit("SET_UPCOMMING", res.data.results);
           //console.log(res.data.results);
@@ -146,7 +149,7 @@ export default {
       await Trend()
         .then(res => {
           commit("SET_TREND", res.data);
-          console.log(res.data.results);
+          //console.log(res.data);
         })
         .catch(err => {
           console.log(err);

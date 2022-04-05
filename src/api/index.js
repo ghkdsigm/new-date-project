@@ -3,44 +3,63 @@ import axios from "axios";
 const IMDB_API_KEY = "k_m3futmwz";
 const TMDB_API_KEY = "f737a98f38d3441bb0955cfa6f9dc5d3";
 
-// const api = {
-//   baseURL: `https://www.omdbapi.com/?apikey=${OMDB_API_KEY}&i=${id}`,
-// };
+const DOMAIN = "https://api.themoviedb.org/3/";
 
-// const api = axios.create({
-//   baseURL: "https://api.themoviedb.org/3/",
-//   params: {
-//     api_key: "f737a98f38d3441bb0955cfa6f9dc5d3",
-//     language: "en-US",
-//   },
-// });
-
-const api = {
-  upcoming: "https://api.themoviedb.org/3/movie/upcoming?api_key=",
-  popular: "https://api.themoviedb.org/3/movie/popular?api_key=",
-  trend: "https://api.themoviedb.org/3/trending/all/day?api_key=",
-};
+const request = axios.create({
+  baseURL: "https://api.themoviedb.org/3/",
+  params: {
+    api_key: "f737a98f38d3441bb0955cfa6f9dc5d3",
+    language: "ko-KR",
+  },
+});
 
 function fetchBoxOffice() {
   return axios.get(`https://imdb-api.com/en/API/BoxOffice/${IMDB_API_KEY}`);
 }
 
-function upComming() {
-  return axios.get(`${api.upcoming}${TMDB_API_KEY}&language=en-US&page=1`);
+function upComming(id) {
+  return request.get("movie/upcoming");
 }
 
 function poPular() {
-  return axios.get(`${api.popular}${TMDB_API_KEY}&language=en-US&page=1`);
+  return request.get("movie/popular");
+}
+
+function Person(person_id) {
+  return request.get("movie/person", { person_id });
 }
 
 function Trend() {
-  return axios.get(`${api.trend}${TMDB_API_KEY}`);
+  return axios.get(
+    `https://api.themoviedb.org/3/trending/all/day?api_key=${TMDB_API_KEY}`,
+  );
 }
 
-function videoTrailer() {
+function videoTrailer(id) {
   return axios.get(
     `https://api.themoviedb.org/3/movie/760926?api_key=${TMDB_API_KEY}&append_to_response=videos`,
   );
 }
 
-export { fetchBoxOffice, upComming, poPular, videoTrailer, Trend };
+function movieDetail(id) {
+  return request.get(`movie/${id}`, {
+    params: { append_to_response: "videos" },
+  });
+}
+
+function similar(id) {
+  return request.get(`movie/${id}`, {
+    params: { append_to_response: "similar_movies,credits,external_ids" },
+  });
+}
+
+export {
+  fetchBoxOffice,
+  upComming,
+  poPular,
+  videoTrailer,
+  Trend,
+  movieDetail,
+  Person,
+  similar,
+};

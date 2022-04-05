@@ -1,7 +1,9 @@
 <template>
   <div>
     <div class="wrapTitle">
-      <p>{{ theMovie.Title.toUpperCase() }}</p>
+      <p>
+        {{ theMovie.Title.toUpperCase() }}
+      </p>
     </div>
     <div class="wrap">
       <div class="content">

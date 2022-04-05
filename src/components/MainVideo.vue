@@ -10,6 +10,12 @@
           frameborder="0"
           allow="autoplay"
         ></iframe>
+        <!-- <div v-for="(item, index) in this.Id" :key="index">
+          {{ item }}
+        </div> -->
+        <!-- <div>
+          {{ getId() }}
+        </div> -->
       </div>
     </div>
   </div>
@@ -19,12 +25,28 @@
 import "default-passive-events";
 import { mapState } from "vuex";
 export default {
+  // data() {
+  //   return {
+  //     Id: [],
+  //   };
+  // },
   computed: {
-    ...mapState("movie", ["video"]),
+    ...mapState("movie", ["video", "movieId"]),
   },
   created() {
     this.$store.dispatch("movie/FETCH_VIDEO");
   },
+  // methods: {
+  //   getId() {
+  //     const arr = this.$store.state.movie.movieId;
+  //     for (let i = 0; i < arr.length; i++) {
+  //       const chosen = arr.splice(Math.floor(Math.random() * arr.length), 1)[0];
+  //       //랜덤숫자 하나 뽑고
+  //       this.Id.push(chosen.id);
+  //     }
+  //     return this.Id[0];
+  //   },
+  // },
 };
 </script>
 
@@ -49,7 +71,7 @@ export default {
       height: 200px;
       left: 0;
       bottom: 0;
-      background: linear-gradient(0deg, #000 10%, transparent);
+      background: linear-gradient(0deg, #000 30%, transparent);
       display: block;
     }
     &::after {
@@ -59,7 +81,7 @@ export default {
       height: 200px;
       left: 0;
       top: 0;
-      background: linear-gradient(180deg, #000 10%, transparent);
+      background: linear-gradient(180deg, #000 30%, transparent);
       display: block;
     }
   }

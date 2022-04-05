@@ -1,28 +1,27 @@
 <template>
-  <div class="container">
-    <h2 class="officeh2">계봉예정</h2>
-    <div class="inner">
-      <ul class="movies">
-        <li v-for="(item, index) in upcomming" :key="index" class="movie">
-          <UpcommingListItem :item="item" />
-        </li>
-      </ul>
+  <div>
+    <RouterLink :to="`/moviedetail/${item.id}`" class="movieItem">
+      <img :src="`https://image.tmdb.org/t/p/w500${item.poster_path}`" alt="" />
+    </RouterLink>
+    <div aria-hidden="true" class="sub-title">
+      <!---->
+      <div class="sub-right">
+        <div class="cell-title">
+          <span class="title1 line1" style="">{{ item.title }}</span>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import { mapState } from "vuex";
-import UpcommingListItem from "./UpcommingListItem";
 export default {
-  components: {
-    UpcommingListItem,
-  },
-  computed: {
-    ...mapState("movie", ["upcomming"]),
-  },
-  created() {
-    this.$store.dispatch("movie/FETCH_UPCOMMING");
+  components: {},
+  props: {
+    item: {
+      type: Object,
+      default: () => ({}),
+    },
   },
 };
 </script>

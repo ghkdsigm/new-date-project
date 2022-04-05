@@ -5,7 +5,7 @@
     </div> -->
     <div class="wrap">
       <div class="container">
-        <h2 class="officeh2">TREND</h2>
+        <h2 class="officeh2">요즘 트렌드</h2>
       </div>
     </div>
     <div class="slideWrap">
@@ -23,12 +23,12 @@
           <div class="img_box">
             <div class="image-area">
               <span class="rankTag">{{ item.media_type }}</span>
-              <a href="#">
+              <RouterLink :to="`/moviedetail/${item.id}`" class="movieItem">
                 <img
                   :src="`https://image.tmdb.org/t/p/w500${item.poster_path}`"
                   alt=""
                 />
-              </a>
+              </RouterLink>
             </div>
           </div>
         </swiper-slide>
