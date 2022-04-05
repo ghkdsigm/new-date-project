@@ -3,7 +3,9 @@
     <!-- <div v-for="(item, index) in boxoffice.items" :key="index">
       {{ item }}
     </div> -->
-    <h2 class="officeh2">요즘 트렌드</h2>
+    <h2 class="officeh2">
+      요즘 HOT <em style="font-style: italic">! </em> 영화
+    </h2>
     <div class="slideWrap">
       <swiper
         ref="mySwiper"

@@ -1,13 +1,6 @@
 <template>
   <div>
-    <!-- <div v-for="(item, index) in boxoffice.items" :key="index">
-      {{ item }}
-    </div> -->
-    <div class="wrap">
-      <div class="container">
-        <h2 class="officeh2">극장가 인기 영화</h2>
-      </div>
-    </div>
+    <h2 class="officeh2">현재 상영중인</h2>
     <div class="slideWrap">
       <swiper
         ref="mySwiper"
@@ -17,13 +10,23 @@
       >
         <swiper-slide
           class="swiper-img"
-          v-for="(item, index) in popular.results"
+          v-for="(item, index) in nowplay.results"
           :key="index"
         >
           <div class="img_box">
             <div class="image-area">
-              <span class="rankTag"
-                >{{ index + 1 }} <em class="pointTxt">위</em></span
+              <span class="rankTag2"
+                ><em class="pointTxt">평점</em> {{ item.vote_average }}
+              </span>
+              <span class="rankTag3"
+                ><em class="pointTxt"
+                  >개봉일
+                  {{
+                    item.release_date.includes("-")
+                      ? item.release_date.replaceAll("-", ".")
+                      : false
+                  }}</em
+                ></span
               >
               <RouterLink :to="`/moviedetail/${item.id}`" class="movieItem">
                 <img
@@ -54,20 +57,19 @@ export default {
   data() {
     return {
       swiperOptions: {
-        slidesPerView: 5,
+        slidesPerView: 3,
         spaceBetween: 30,
-        freeMode: false,
+        freeMode: true,
         freeModeSticky: false,
-        scrollbarHide: true,
-        pagination: {
-          clickable: true,
-        },
+        scrollbar: ".sw-scroll1",
+        scrollbarHide: false,
+        scrollbarDraggable: true,
         grabCursor: true,
         loop: false,
-        // pagination: {
-        //   type: "progressbar",
-        //   el: ".swiper-pagination",
-        // },
+        pagination: {
+          type: "progressbar",
+          el: ".swiper-pagination",
+        },
         enterInsufficientSlides: true, // 컨텐츠의 수량에 따라 중앙정렬 여부를 결정함
         breakpoints: {
           375: {
@@ -91,10 +93,10 @@ export default {
     };
   },
   computed: {
-    ...mapState("movie", ["popular"]),
+    ...mapState("movie", ["nowplay"]),
   },
   created() {
-    this.$store.dispatch("movie/FETCH_POPULAR");
+    this.$store.dispatch("movie/FETCH_NOW");
   },
 };
 </script>
@@ -102,6 +104,9 @@ export default {
 <style scope>
 .slideWrap {
   margin: 30px 0 30px 0;
+}
+.swiper-container {
+  margin: 0 10px;
 }
 .swiper {
   width: 100%;
@@ -165,19 +170,39 @@ export default {
 .multi-banner .swiper-slide img {
   width: 100%;
 }
-.rankTag {
+.rankTag2 {
   position: absolute;
-  padding: 10px 20px;
-  background-color: #e02020bd;
-  border-radius: 0 0 0 15px;
+  padding: 13px 20px 10px;
+  background-color: #4020e0bd;
+  border-radius: 0 0 15px 0;
   border-bottom: 2px solid #000;
   color: #fff;
   font-size: 26px;
   font-weight: bold;
-  right: 0;
+  left: 0;
   text-align: center;
   font-family: Neusa, Impact, Helvetica Neue, Arial, Sans-Serif;
   z-index: 9999;
+}
+
+.rankTag3 {
+  position: absolute;
+  padding: 10px 10px 5px;
+  background-color: #303030bd;
+  border-radius: 15px 0 0 0;
+  border-bottom: 2px solid #000;
+  color: #fff;
+  font-size: 10px;
+  font-weight: bold;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+  font-family: Neusa, Impact, Helvetica Neue, Arial, Sans-Serif;
+  z-index: 9999;
+}
+.rankTag3 em {
+  font-weight: 100;
+  font-family: "Roboto";
 }
 
 .officeh2 {
@@ -186,5 +211,8 @@ export default {
   font-size: 35px;
   font-weight: 500;
   font-family: Neusa, Impact, Helvetica Neue, Arial, Sans-Serif;
+}
+.swiper-pagination-progressbar-fill {
+  background: #96f2d7 !important;
 }
 </style>

@@ -1,10 +1,6 @@
 import axios from "axios";
 
-const IMDB_API_KEY = "k_m3futmwz";
 const TMDB_API_KEY = "f737a98f38d3441bb0955cfa6f9dc5d3";
-
-const DOMAIN = "https://api.themoviedb.org/3/";
-
 const request = axios.create({
   baseURL: "https://api.themoviedb.org/3/",
   params: {
@@ -13,16 +9,16 @@ const request = axios.create({
   },
 });
 
-function fetchBoxOffice() {
-  return axios.get(`https://imdb-api.com/en/API/BoxOffice/${IMDB_API_KEY}`);
-}
-
 function upComming(id) {
   return request.get("movie/upcoming");
 }
 
 function poPular() {
   return request.get("movie/popular");
+}
+
+function nowPlaying() {
+  return request.get("movie/now_playing");
 }
 
 function Person(person_id) {
@@ -62,7 +58,6 @@ function similar(id) {
 }
 
 export {
-  fetchBoxOffice,
   upComming,
   poPular,
   videoTrailer,
@@ -71,4 +66,5 @@ export {
   Person,
   similar,
   search,
+  nowPlaying,
 };

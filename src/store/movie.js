@@ -5,6 +5,7 @@ import {
   poPular,
   videoTrailer,
   Trend,
+  nowPlaying,
 } from "../api/index.js";
 
 const _defaultMessage = "there is no results. please search some movie!";
@@ -18,6 +19,7 @@ export default {
     video: {},
     trend: [],
     movieId: {},
+    nowplay: [],
   },
   getters: {},
   mutations: {
@@ -37,6 +39,9 @@ export default {
     },
     SET_TREND(state, payload) {
       return (state.trend = payload);
+    },
+    SET_NOW(state, payload) {
+      return (state.nowplay = payload);
     },
   },
   actions: {
@@ -88,6 +93,17 @@ export default {
         .then(res => {
           commit("SET_TREND", res.data);
           //console.log(res.data);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+
+    async FETCH_NOW({ commit }) {
+      await nowPlaying()
+        .then(res => {
+          commit("SET_NOW", res.data);
+          console.log(res.data);
         })
         .catch(err => {
           console.log(err);
