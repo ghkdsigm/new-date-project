@@ -323,7 +323,7 @@ export default {
 
 .officeh2 {
   margin: 0 10px 15px;
-  font-size: 30px;
+  font-size: 28px;
   font-weight: 100;
   width: 100%;
   text-align: center;
