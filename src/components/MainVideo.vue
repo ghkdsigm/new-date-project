@@ -88,7 +88,7 @@ export default {
       this.subtitle = this.updated.original_title;
       this.genres = this.updated.genres[0].name;
       this.releasedate = this.updated.release_date;
-      console.log(this.updated);
+      //console.log(this.updated);
     },
   },
   methods: {
