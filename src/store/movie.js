@@ -1,6 +1,4 @@
-import axios from "axios";
 import {
-  fetchBoxOffice,
   upComming,
   poPular,
   videoTrailer,
@@ -8,11 +6,9 @@ import {
   nowPlaying,
 } from "../api/index.js";
 
-const _defaultMessage = "there is no results. please search some movie!";
 export default {
   namespaced: true,
   state: {
-    boxoffice: [],
     popular: [],
     upcomming: [],
     video: {},
@@ -22,9 +18,6 @@ export default {
   },
   getters: {},
   mutations: {
-    SET_BOXOFFICE(state, payload) {
-      return (state.boxoffice = payload);
-    },
     SET_POPULAR(state, payload) {
       return (state.popular = payload);
     },
@@ -44,17 +37,6 @@ export default {
     },
   },
   actions: {
-    async FETCH_BOXOFFICE({ commit }) {
-      await fetchBoxOffice()
-        .then(res => {
-          commit("SET_BOXOFFICE", res.data);
-          //console.log(res.data);
-        })
-        .catch(err => {
-          console.log(err);
-        });
-    },
-
     async FETCH_UPCOMMING({ commit }, id) {
       await upComming(id)
         .then(res => {
