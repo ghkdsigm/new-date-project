@@ -63,7 +63,7 @@ export default {
 .bottom-right {
   position: fixed;
   bottom: 5%;
-  right: 5%;
+  right: 3%;
   z-index: 9999;
   background-image: url("~@/assets/images/arrowTop.png");
   background-size: cover;
