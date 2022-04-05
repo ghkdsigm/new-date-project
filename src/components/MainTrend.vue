@@ -4,7 +4,7 @@
       {{ item }}
     </div> -->
     <h2 class="officeh2">
-      요즘 HOT <em style="font-style: italic">! </em> 영화
+      요즘 HOT <em style="font-style: italic">! </em> 영화 & 드라마
     </h2>
     <div class="slideWrap">
       <swiper

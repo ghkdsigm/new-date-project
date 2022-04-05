@@ -103,7 +103,7 @@ export default {
       await nowPlaying()
         .then(res => {
           commit("SET_NOW", res.data);
-          console.log(res.data);
+          //console.log(res.data);
         })
         .catch(err => {
           console.log(err);

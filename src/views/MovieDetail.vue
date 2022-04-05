@@ -323,7 +323,10 @@ export default {
 
 .officeh2 {
   margin: 0 10px 15px;
-  font-size: 20px;
+  font-size: 24px;
+  font-weight: 100;
+  width: 100%;
+  text-align: center;
 }
 .similarWrap {
   ul {
