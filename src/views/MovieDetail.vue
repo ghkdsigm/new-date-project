@@ -34,7 +34,7 @@
           </div>
           <div class="infoRating topbottom">
             <b>평점 :</b>
-            {{ movieDetail.vote_average }} 점
+            {{ movieDetail.vote_average }} / 10 점
           </div>
           <div class="infoRuntime topbottom">
             <b>상영시간 :</b>
