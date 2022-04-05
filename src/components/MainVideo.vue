@@ -14,7 +14,7 @@
             width="100%"
             :src="`${youtube(
               this.updated.videos.results[0].key,
-            )}?autoplay=1&modestbranding=1&autohide=1&showinfo=0&showtitle=0&controls=0`"
+            )}?autoplay=1&modestbranding=1&autohide=1&showinfo=0&showtitle=0`"
             frameborder="0"
             allow="autoplay"
           >
@@ -28,7 +28,7 @@
           </div>
           <iframe
             width="100%"
-            :src="`https://www.youtube.com/embed/${video}?autoplay=1&modestbranding=1&autohide=1&showinfo=0&showtitle=0&controls=0`"
+            :src="`https://www.youtube.com/embed/${video}?autoplay=1&modestbranding=1&autohide=1&showinfo=0&showtitle=0`"
             frameborder="0"
             allow="autoplay"
           ></iframe>
@@ -60,7 +60,7 @@ export default {
     };
   },
   computed: {
-    ...mapState("movie", ["video", "movieId"]),
+    ...mapState("movie", ["video"]),
     cp() {
       return this.$store.state.movie.movieId;
     },
@@ -95,13 +95,13 @@ export default {
     youtube(src) {
       return `https://www.youtube.com/embed/${src}`;
     },
-    callTitle() {
-      setTimeout(() => {
+    async callTitle() {
+      await setTimeout(() => {
         this.$refs.ifT.style.opacity = "0";
       }, 5000);
     },
-    callTitle2() {
-      setTimeout(() => {
+    async callTitle2() {
+      await setTimeout(() => {
         this.$refs.ifT.style.opacity = "0";
       }, 5000);
     },
