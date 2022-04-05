@@ -1,10 +1,5 @@
 <template>
   <div>
-    <!-- <div class="wrapTitle">
-      <p>
-        {{ movieDetail.title }}
-      </p>
-    </div> -->
     <div
       class="infoSection01"
       :style="`background-image: radial-gradient(circle, rgba(0, 0, 0, 0.5) 0%, rgb(0, 0, 0) 100%) ,url(https://image.tmdb.org/t/p/w1280${movieDetail.backdrop_path});`"

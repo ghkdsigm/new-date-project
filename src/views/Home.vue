@@ -2,7 +2,7 @@
   <div>
     <MainVideo />
     <MainPopular />
-    <MainPage />
+    <MainSearch />
     <div class="wrap">
       <MainTrend />
       <UpcommingList />
@@ -13,15 +13,14 @@
 <script>
 import MainVideo from "@/components/MainVideo";
 import MainPopular from "@/components/MainPopular";
-import MainPage from "@/components/MainPage";
+import MainSearch from "@/components/MainSearch";
 import MainTrend from "@/components/MainTrend";
 import UpcommingList from "@/components/UpcommingList";
 export default {
   components: {
     MainVideo,
     MainPopular,
-    MainPage,
-
+    MainSearch,
     MainTrend,
     UpcommingList,
   },
