@@ -1,3 +1,6 @@
+body, html {
+    scrollbar-face-color:#a5a5a5;scrollbar-track-color: #1b1b1b;scrollbar-arrow-color:#a5a5a5;scrollbar-3dlight-color: none;scrollbar-shadow-color: #a5a5a5;scrollbar-darkshadow-color: none;scrollbar-color: #a5a5a5 #1b1b1b}::-webkit-scrollbar{width:8px;height:8px;background-color:transparent}::-webkit-scrollbar-track{border-radius:0;background-color:transparent}::-webkit-scrollbar-thumb{height:8px;border-radius:0;background-color:#a5a5a5
+}
 .header {
     position: fixed;
     z-index: 1750;
