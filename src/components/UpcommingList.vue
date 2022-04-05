@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h2 class="officeh2">개봉예정</h2>
+    <h2 class="officeh2">곧 개봉 예정</h2>
     <div class="upcommingWrap">
       <ul class="movies">
         <li v-for="(item, index) in upcomming" :key="index" class="movie">
