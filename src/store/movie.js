@@ -12,7 +12,6 @@ const _defaultMessage = "there is no results. please search some movie!";
 export default {
   namespaced: true,
   state: {
-    theMovie: {},
     boxoffice: [],
     popular: [],
     upcomming: [],

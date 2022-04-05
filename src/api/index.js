@@ -9,7 +9,7 @@ const request = axios.create({
   },
 });
 
-function upComming(id) {
+function upComming() {
   return request.get("movie/upcoming");
 }
 
@@ -33,7 +33,7 @@ function Trend() {
 
 function videoTrailer(id) {
   return axios.get(
-    `https://api.themoviedb.org/3/movie/760926?api_key=${TMDB_API_KEY}&append_to_response=videos`,
+    `https://api.themoviedb.org/3/movie/453395?api_key=${TMDB_API_KEY}&append_to_response=videos`,
   );
 }
 

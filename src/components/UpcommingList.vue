@@ -44,7 +44,7 @@ export default {
   .movies {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: left;
     .movie {
       width: 228px;
       margin: 10px;
