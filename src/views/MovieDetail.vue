@@ -62,14 +62,43 @@
         </div>
       </div>
     </div>
-    <div class="infoSection02"></div>
+    <div class="infoSection02">
+      <div class="wrap">
+        <div class="container">
+          <h2 class="officeh2">
+            <em style="color: #96f2d7">" {{ movieDetail.title }} "</em> 와(과)
+            유사한 영화 추천
+          </h2>
+          <div class="similarWrap">
+            <ul>
+              <li v-for="(item, index) in similar" :key="index">
+                <div class="poster">
+                  <RouterLink
+                    :to="`/moviedetail/${item.id}`"
+                    class="movie"
+                    target="_blank"
+                  >
+                    <img
+                      :src="`https://image.tmdb.org/t/p/w185${item.poster_path}`"
+                      :alt="item.title"
+                      :title="item.title"
+                    />
+                    <p>{{ item.title }}</p>
+                  </RouterLink>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="infoSection03"></div>
     <div class="infoSection04"></div>
   </div>
 </template>
 
 <script>
-import { movieDetail } from "@/api/index.js";
+import { movieDetail, similar } from "@/api/index.js";
 import { mapState } from "vuex";
 
 export default {
@@ -87,9 +116,12 @@ export default {
     console.log(this.$route.params.id);
     const { id } = this.$route.params;
     const { data } = await movieDetail(id);
+    const res = await similar(id);
     // axios 요청 보내기
-    console.log(data);
+    //console.log(data);
+    console.log(res.data.similar_movies.results);
     this.movieDetail = data;
+    this.similar = res.data.similar_movies.results;
   },
   created() {
     this.$store.dispatch("movie/FETCH_UPCOMMING", {
@@ -157,6 +189,7 @@ export default {
         width: 80%;
         height: 100%;
         display: inline-block;
+        box-shadow: 0 0 15px 1px #000;
       }
     }
     .info {
@@ -285,6 +318,50 @@ export default {
   margin: 15px 0;
   b {
     color: #96f2d7;
+  }
+}
+
+.officeh2 {
+  margin: 0 10px 15px;
+  font-size: 20px;
+}
+.similarWrap {
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    li {
+      width: 157px;
+      margin: 10px;
+      border-radius: 4px;
+      background-size: contain;
+      overflow: hidden;
+      position: relative;
+      .poster {
+        a {
+          width: 100%;
+          height: 275px;
+          display: block;
+          position: relative;
+          color: #a5a5a5;
+          &:hover p {
+            color: #fff;
+          }
+          img {
+            width: 100%;
+            max-height: 210px;
+          }
+          p {
+            display: table;
+            width: 100%;
+            padding-top: 8px;
+            padding-right: 12px;
+            table-layout: fixed;
+            vertical-align: middle;
+          }
+        }
+      }
+    }
   }
 }
 </style>
