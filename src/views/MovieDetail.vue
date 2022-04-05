@@ -329,6 +329,7 @@ export default {
   text-align: center;
 }
 .similarWrap {
+  margin-bottom: 100px;
   ul {
     display: flex;
     flex-wrap: wrap;
