@@ -66,7 +66,36 @@
       <div class="wrap">
         <div class="container">
           <h2 class="officeh2">
-            <em style="color: #96f2d7">" {{ movieDetail.title }} "</em> 와(과)
+            <em style="color: #96f2d7">{{ movieDetail.title }} </em> 출연배우
+          </h2>
+          <div class="casting">
+            <ul>
+              <li v-for="item in this.actors.slice(0, 14)" :key="item.id">
+                <div class="poster">
+                  <RouterLink
+                    :to="`https://image.tmdb.org/t/p/original${item.profile_path}`"
+                    :title="item.name"
+                    :alt="item.name"
+                    target="_blank"
+                  >
+                    <img
+                      :src="
+                        !item.profile_path == ''
+                          ? `https://image.tmdb.org/t/p/original${item.profile_path}`
+                          : require(`@/assets/images/noimg2.png`)
+                      "
+                      :alt="item.name"
+                    />
+                    <p>{{ item.character }} 역</p>
+                    <p>{{ item.name }}</p>
+                  </RouterLink>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <h2 class="officeh2">
+            <em style="color: #96f2d7">{{ movieDetail.title }}</em> 와(과)
             유사한 영화 추천
           </h2>
           <div class="similarWrap">
@@ -106,22 +135,24 @@ export default {
     return {
       movieDetail: {},
       similar: {},
+      actors: [],
     };
   },
   computed: {
     ...mapState("movie", ["movieId"]),
   },
   async mounted() {
-    console.log(this.$route);
-    console.log(this.$route.params.id);
+    //console.log(this.$route);
+    //console.log(this.$route.params.id);
     const { id } = this.$route.params;
     const { data } = await movieDetail(id);
     const res = await similar(id);
     // axios 요청 보내기
-    //console.log(data);
-    console.log(res.data.similar_movies.results);
+    console.log(res);
+    //console.log(res.data.similar_movies.results);
     this.movieDetail = data;
     this.similar = res.data.similar_movies.results;
+    this.actors = res.data.credits.cast;
   },
   created() {
     this.$store.dispatch("movie/FETCH_UPCOMMING", {
@@ -132,6 +163,9 @@ export default {
   methods: {
     youtube(src) {
       return `https://www.youtube.com/embed/${src}`;
+    },
+    replaceByDefault(e) {
+      e.target.src = "@/assets/images/noimg.png";
     },
   },
 };
@@ -356,12 +390,61 @@ export default {
             max-height: 210px;
           }
           p {
-            display: table;
             width: 100%;
             padding-top: 8px;
             padding-right: 12px;
             table-layout: fixed;
             vertical-align: middle;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+          }
+        }
+      }
+    }
+  }
+}
+.casting {
+  margin-bottom: 100px;
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    li {
+      width: 157px;
+      margin: 10px;
+      border-radius: 4px;
+      background-size: contain;
+      overflow: hidden;
+      position: relative;
+      .poster {
+        a {
+          width: 100%;
+          height: 275px;
+          display: block;
+          position: relative;
+          color: #a5a5a5;
+          &:hover p {
+            color: #fff;
+          }
+          img {
+            width: 100%;
+            max-height: 210px;
+            display: block;
+            border-radius: 5px;
+          }
+          p {
+            width: 100%;
+            padding-top: 8px;
+            padding-right: 12px;
+            table-layout: fixed;
+            vertical-align: middle;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            &:last-child {
+              font-size: 14px;
+            }
           }
         }
       }

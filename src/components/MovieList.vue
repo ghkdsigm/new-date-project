@@ -49,6 +49,7 @@ export default {
     background: #121212;
     padding: 15px 0;
     border-radius: 10px;
+    font-weight: 300;
   }
   .movies {
     display: flex;
