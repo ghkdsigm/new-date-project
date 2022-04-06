@@ -15,7 +15,7 @@
   padding: 80px 20px;
   .status {
     font-size: 160px;
-    color: $primary;
+    color: gray;
   }
   .message {
     font-size: 50px;
@@ -25,7 +25,7 @@
     border: 1px solid rgb(93, 93, 93);
     background-color: transparent;
     padding: 5px 15px;
-    color: $black;
+    color: #000;
   }
 }
 </style>
