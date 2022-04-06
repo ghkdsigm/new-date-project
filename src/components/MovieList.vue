@@ -3,6 +3,9 @@
     <div class="container">
       <div class="inner">
         <div class="movies">
+          <div class="message">
+            {{ this.defaultMessage }}
+          </div>
           <MovieItem
             v-for="movie in movieList"
             :key="movie.id"
@@ -17,7 +20,7 @@
 <script>
 import MovieItem from "./MovieItem";
 export default {
-  props: ["movieList"],
+  props: ["movieList", "defaultMessage"],
   components: {
     MovieItem,
   },
@@ -40,6 +43,12 @@ export default {
   .message {
     color: gray;
     font-size: 20px;
+    margin: 0 10px;
+    text-align: center;
+    width: 100%;
+    background: #121212;
+    padding: 15px 0;
+    border-radius: 10px;
   }
   .movies {
     display: flex;

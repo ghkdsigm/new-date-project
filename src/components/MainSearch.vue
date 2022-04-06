@@ -23,7 +23,7 @@
         </button>
       </div>
     </div>
-    <MovieList :movieList="movieList" />
+    <MovieList :movieList="movieList" :defaultMessage="defaultMessage" />
   </div>
 </template>
 
@@ -35,6 +35,7 @@ export default {
     return {
       keyword: "",
       movieList: "",
+      defaultMessage: "검색된영화가 존재하지않습니다.",
     };
   },
   components: {
@@ -47,10 +48,15 @@ export default {
         this.keyword = "";
         return;
       }
-      const { data } = await search(this.keyword);
-      console.log(data);
-      this.movieList = data.results;
-      this.keyword = "";
+      await search(this.keyword)
+        .then(({ data }) => {
+          this.defaultMessage = `검색하신 ' ${this.keyword} '의 검색으로 총 ' ${data.results.length} ' 개의 결과를 찾았습니다.`;
+          this.movieList = data.results;
+          this.keyword = "";
+        })
+        .catch(err => {
+          console.log(err);
+        });
     },
   },
 };
