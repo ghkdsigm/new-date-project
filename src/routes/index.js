@@ -28,6 +28,17 @@ export const router = new VueRouter({
       name: "sub",
       component: () => import("@/views/Sub.vue"),
     },
+    {
+      path: "/404",
+      name: "NotFound",
+      component: () => import("@/routes/NotFound.vue"),
+    },
+    {
+      path: "*",
+      redirect: to => {
+        return { name: "NotFound" };
+      },
+    },
   ],
   scrollBehavior(to, from, savedPosition) {
     return { x: 0, y: 0 };
