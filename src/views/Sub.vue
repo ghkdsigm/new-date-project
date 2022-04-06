@@ -1,14 +1,16 @@
 <template>
   <div>
-    <SubPage />
+    <div class="wrap">
+      <PopularActors />
+    </div>
   </div>
 </template>
 
 <script>
-import SubPage from "@/components/SubPage";
+import PopularActors from "@/components/PopularActors";
 export default {
   components: {
-    SubPage,
+    PopularActors,
   },
 };
 </script>

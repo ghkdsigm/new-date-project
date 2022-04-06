@@ -17,6 +17,10 @@ function poPular() {
   return request.get("movie/popular");
 }
 
+function personPopular() {
+  return request.get("person/popular");
+}
+
 function nowPlaying() {
   return request.get("movie/now_playing");
 }
@@ -43,6 +47,14 @@ function movieDetail(id) {
   });
 }
 
+function personDetail(person_id) {
+  return request.get(`person/${person_id}`);
+}
+
+function personCredits(person_id) {
+  return request.get(`person/${person_id}}/combined_credits`);
+}
+
 function search(keyword) {
   return request.get(`search/movie/`, {
     params: {
@@ -67,4 +79,7 @@ export {
   similar,
   search,
   nowPlaying,
+  personPopular,
+  personDetail,
+  personCredits,
 };

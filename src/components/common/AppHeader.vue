@@ -10,8 +10,8 @@
           </h1>
           <div id="menu" class="gnb-left">
             <ul>
-              <li><router-link to="/">홈</router-link></li>
-              <li><router-link to="/sub">카테고리</router-link></li>
+              <li><router-link to="/">미디어</router-link></li>
+              <li><router-link to="/sub">배우</router-link></li>
             </ul>
           </div>
           <!-- <button type="button" class="btn-search">

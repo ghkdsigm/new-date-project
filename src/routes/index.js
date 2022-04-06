@@ -20,6 +20,10 @@ export const router = new VueRouter({
       component: () => import("@/views/MovieDetail.vue"),
     },
     {
+      path: "/persondetail/:id",
+      component: () => import("@/views/PersonDetail.vue"),
+    },
+    {
       path: "/sub",
       name: "sub",
       component: () => import("@/views/Sub.vue"),

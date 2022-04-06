@@ -1,6 +1,11 @@
 <template>
   <div>
-    <div class="smokeBg">
+    <div
+      class="smokeBg"
+      :style="{
+        backgroundImage: `url(https://image.tmdb.org/t/p/original${this.bgList})`,
+      }"
+    >
       <div id="searchFrm">
         <form @submit.prevent="onSearch" class="search-box">
           <input
@@ -36,6 +41,7 @@ export default {
       keyword: "",
       movieList: "",
       defaultMessage: "검색된영화가 존재하지않습니다.",
+      bgList: {},
     };
   },
   components: {
@@ -59,6 +65,21 @@ export default {
         });
     },
   },
+  computed: {
+    cp() {
+      return this.$store.state.movie.movieId;
+    },
+  },
+  watch: {
+    cp(a) {
+      const arr = a.map(a => a.backdrop_path);
+      const chosen = arr.splice(Math.floor(Math.random() * arr.length), 1)[0];
+      //랜덤숫자 하나 뽑고
+      if (!chosen == "") {
+        this.bgList = chosen;
+      }
+    },
+  },
 };
 </script>
 
@@ -69,7 +90,7 @@ export default {
   background-size: cover;
   background-position: bottom;
   position: relative;
-  background-image: url("~@/assets/images/imgbg.jpg");
+  //background-image: url("~@/assets/images/imgbg.jpg");
   background-attachment: fixed;
   &::before {
     content: "";
@@ -80,6 +101,9 @@ export default {
     bottom: 0;
     background: linear-gradient(to top, #00000078, rgb(0 0 0 / 43%));
     display: block;
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    background-color: rgb(0 0 0 / 70%);
   }
   img {
     width: 100%;

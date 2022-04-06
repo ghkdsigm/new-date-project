@@ -73,7 +73,7 @@
               <li v-for="item in this.actors.slice(0, 14)" :key="item.id">
                 <div class="poster">
                   <RouterLink
-                    :to="`https://image.tmdb.org/t/p/original${item.profile_path}`"
+                    :to="`/persondetail/${item.id}`"
                     :title="item.name"
                     :alt="item.name"
                     target="_blank"
@@ -194,6 +194,12 @@ export default {
     bottom: 0;
     min-height: 100vh;
     background-color: #0000008c;
+    background-image: linear-gradient(
+      180deg,
+      transparent,
+      rgb(37 37 37 / 12%),
+      #111
+    );
     opacity: 0.8;
     content: "";
     display: block;
