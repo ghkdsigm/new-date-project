@@ -100,7 +100,7 @@
           </h2>
           <div class="similarWrap">
             <ul>
-              <li v-for="(item, index) in similar" :key="index">
+              <li v-for="(item, index) in similar.slice(0, 14)" :key="index">
                 <div class="poster">
                   <RouterLink
                     :to="`/moviedetail/${item.id}`"
@@ -148,7 +148,7 @@ export default {
     const { data } = await movieDetail(id);
     const res = await similar(id);
     // axios 요청 보내기
-    console.log(res);
+    //console.log(res);
     //console.log(res.data.similar_movies.results);
     this.movieDetail = data;
     this.similar = res.data.similar_movies.results;

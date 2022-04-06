@@ -53,7 +53,7 @@ export default {
       position: relative;
       .movieItem {
         width: 100%;
-        height: 342px;
+        max-height: 325px;
         display: block;
         position: relative;
         &:hover {
@@ -69,6 +69,7 @@ export default {
         }
         img {
           width: 100%;
+          max-height: 325px;
         }
       }
     }
